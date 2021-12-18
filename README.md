@@ -1,5 +1,5 @@
-CARMA Inertial Labs GNSS/INS Driver
-===================================
+Inertial Labs GNSS/INS Driver for CARMA
+=======================================
 
 This is a fork of the [Inertial Labs ROS](https://us.inertiallabs.com:31443/projects/INS/repos/inertiallabs-ros-pkgs/browse) package that is used for connecting to [Inertial Labs](https://inertiallabs.com/products/) GNSS/INS, IMU-P, AHRS, and AHRS-10 products. This fork has been modified to allow for building a Docker image that can serve as both a GNSS/INS driver as well as a standalone INS driver for the [CARMA Platform](https://github.com/usdot-fhwa-stol/carma-platform).
 
