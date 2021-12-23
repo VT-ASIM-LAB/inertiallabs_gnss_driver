@@ -99,13 +99,11 @@ void publish_device(IL::INSDataStruct *data, void* contextPtr)
 		if (last_gnss_discovery_pub == ros::Time(0) || (ros::Time::now() - last_gnss_discovery_pub).toSec() > 0.8)
       	{
         	context->publishers[2].publish(msg_discovery_gnss);
-			
 			last_gnss_discovery_pub = ros::Time::now();
       	}
 		if (last_imu_discovery_pub == ros::Time(0) || (ros::Time::now() - last_imu_discovery_pub).toSec() > 0.8)
       	{
         	context->publishers[2].publish(msg_discovery_imu);
-			
 			last_imu_discovery_pub = ros::Time::now();
       	}
 	}
@@ -117,7 +115,7 @@ int main(int argc, char** argv)
 	ros::init(argc, argv, "il_ins");
 	ros::NodeHandle n;
 	ros::NodeHandle np("~");
-	ros::Rate r(50); // 100 hz I made it 50 hz
+	ros::Rate r(50);
 	std::string port;
 	IL::Driver ins;
 	int ins_output_format;
@@ -127,12 +125,12 @@ int main(int argc, char** argv)
 	last_gnss_discovery_pub = ros::Time::now();
 	last_imu_discovery_pub = ros::Time::now();
 
-	//command line varibales
+	// Parameters
 
 	np.param<std::string>("ins_url", port, "serial:/dev/ttyUSB0:115200");
     np.param<int>("ins_output_format", ins_output_format, 0x57);  // for OPVTA as ouput 
 
-	//Initializing Publishers
+	// Initializing publishers
 
 	context.publishers[0] = np.advertise<gps_common::GPSFix>("gnss_fix_fused", 10);
 	context.publishers[1] = np.advertise<sensor_msgs::Imu>("imu_raw", 10);

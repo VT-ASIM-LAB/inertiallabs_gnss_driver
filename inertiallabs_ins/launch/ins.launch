@@ -1,14 +1,9 @@
 <launch>
-  <node pkg="inertiallabs_ins" type="il_ins" name="INS" output="screen">
+  <node pkg="inertiallabs_ins" type="il_ins" name="ins" output="screen">
    <remap from="~/gnss_fix_fused" to="/hardware_interface/gnss_fix_fused"/>
    <remap from="~/imu_raw" to="/hardware_interface/imu/imu_raw"/>
    <remap from="~/discovery" to="/hardware_interface/driver_discovery"/>
-   <param name="serial_port" type="string" value="/dev/ttyUSB0" />
-   <param name="serial_baud" type="int" value="115200" />
-   <!-- setting the output type and frequency -->
-   <!-- TODO:- set the command line input -->
-   <param name="output_type" type="int" value="0"/>
-   <!--setting the publishing rate-->
-   <param name="publish_rate" type="int" value="20"/>
+   <param name="ins_url" type="string" value="serial:/dev/ttyUSB0:115200" />
+   <param name="ins_output_format" type="int" value="87"/>
   </node>
 </launch>
