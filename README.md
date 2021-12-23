@@ -46,17 +46,34 @@ ROS API (stable)
 #### Nodes
 * `il_ins`
 
-#### Topics
-* ``: .
-* ``: .
-* `il_ins/discovery`: publishes the CARMA [DriverStatus](https://github.com/usdot-fhwa-stol/carma-msgs/blob/develop/cav_msgs/msg/DriverStatus.msg) message.
+#### Published Topics
+* `il_ins/gnss_fix_fused [gps_common/GPSFix]`: publishes the GNSS fix that has already been fused with IMU data to create an INS solution (20 Hz).
+* `il_ins/imu_raw [sensor_msgs/Imu]`: publishes the raw IMU data obtained from the sensor (20 Hz).
+* `il_ins/discovery [cav_msgs/DriverStatus]`: publishes the CARMA [DriverStatus](https://github.com/usdot-fhwa-stol/carma-msgs/blob/develop/cav_msgs/msg/DriverStatus.msg) message (1.25 Hz).
+
+#### Subscribed Topics
+N/A
 
 #### Services
-* ``
+N/A
 
 #### Parameters
-* ``: .
-* `parameter`: .
+* `il_ins/ins_url`: Port the device is connected to. Can be serial:[path to device]:[baudrate], tcp:[hostname or address]:[tcp server port], or udp:[hostname or address]:[udp server port]. Inertial Labs Driver supports serial connection.
+* `il_ins/ins_output_format`: The output data format of the INS data according to IL INS ICD.
+```
+ IL_SENSOR_DATA             0x50
+ IL_OPVT                    0x52
+ IL_MINIMAL_DATA            0x53
+ IL_QPVT                    0x56
+ IL_OPVT2A                  0x57
+ IL_OPVT2AHR                0x58
+ IL_OPVT2AW                 0x59
+ IL_OPVTAD                  0x61
+ MRU_OPVTHSSHR              0x64
+ IL_OPVT_RAWIMU_DATA        0x66
+ IL_OPVT_GNSSEXT_DATA       0x67
+ IL_USER_DEFINED_DATA       0x95
+```
 
 Examples
 --------
