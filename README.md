@@ -38,8 +38,8 @@ Finally, add the following lines to the `drivers.launch` file in the same direct
 ```
 `ins.launch` is used as an example here and can be replaced with any other launch file in the `inertiallabs_ins/launch` directory.
 
-ROS API (stable)
-----------------
+ROS API
+-------
 
 ### inertiallabs_ins
 
@@ -47,9 +47,10 @@ ROS API (stable)
 * `il_ins`
 
 #### Published Topics
-* `il_ins/gnss_fix_fused [gps_common/GPSFix]`: publishes the GNSS fix that has already been fused with IMU data to create an INS solution (20 Hz).
+Publication frequencies are given for an [Inertial Labs INS-D](https://inertiallabs.com/products/ins/) system.
+* `il_ins/gnss_fix_fused [gps_common/GPSFix]`: publishes the GNSS fix that has already been fused with IMU data to create a GNSS/INS solution (20 Hz).
 * `il_ins/imu_raw [sensor_msgs/Imu]`: publishes the raw IMU data obtained from the sensor (20 Hz).
-* `il_ins/discovery [cav_msgs/DriverStatus]`: publishes the CARMA [DriverStatus](https://github.com/usdot-fhwa-stol/carma-msgs/blob/develop/cav_msgs/msg/DriverStatus.msg) message (1.25 Hz).
+* `il_ins/discovery [cav_msgs/DriverStatus]`: publishes the CARMA [DriverStatus](https://github.com/usdot-fhwa-stol/carma-msgs/blob/develop/cav_msgs/msg/DriverStatus.msg) message (2.5 Hz).
 
 #### Subscribed Topics
 N/A
@@ -58,8 +59,8 @@ N/A
 N/A
 
 #### Parameters
-* `il_ins/ins_url`: Port the device is connected to. Can be serial:[path to device]:[baudrate], tcp:[hostname or address]:[tcp server port], or udp:[hostname or address]:[udp server port]. Inertial Labs Driver supports serial connection.
-* `il_ins/ins_output_format`: The output data format of the INS data according to IL INS ICD.
+* `il_ins/ins_url`: port the device is connected to. Can be serial:[path to device]:[baudrate], tcp:[hostname or address]:[tcp server port], or udp:[hostname or address]:[udp server port]. Inertial Labs Driver supports serial connection.
+* `il_ins/ins_output_format`: the output data INS data format.
 ```
  IL_SENSOR_DATA             0x50
  IL_OPVT                    0x52
@@ -171,7 +172,7 @@ The output data format of the INS data according to IL INS ICD.
 
 `/Inertial_Labs/sensor_data` (`ins_ros/sensor_data`)
 
-Publish Gyro(x,y,z), Accelation(x,y,z), Magnetic (x,y,z), Temprature, Input Voltage, Pressure, Barometric height.
+Publish Gyro (x,y,z), Accelation (x,y,z), Magnetic (x,y,z), Temprature, Input Voltage, Pressure, Barometric height.
 
 `/Inertial_Labs/ins_data` (`ins_ros/ins_data`)
 
@@ -183,7 +184,7 @@ Publish Latitude, Longitude, Altitude, Ground Speed, Track Direction,  Vertical 
 
 `/Inertial_Labs/gnss_data` (`ins_ros/gnss_data`)
 
-Publish GNSS service Info 1, Info 2, Satellites Used, Velocity Latency, Heading status, Heading, Pitch, GDOP, PDOP, HDOP, VDOP, TDOP, New GNSS Flag, Age of differenctiol correction.
+Publish GNSS service Info 1, Info 2, Satellites Used, Velocity Latency, Heading status, Heading, Pitch, GDOP, PDOP, HDOP, VDOP, TDOP, New GNSS Flag, Age of differential correction.
 
 `/Inertial_Labs/marine_data` (`ins_ros/marine_data`)
 
