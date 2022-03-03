@@ -55,6 +55,7 @@
   <!-- Use test_depend for packages you need only for testing: -->
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>carma_cmake_common</build_depend>
   <depend>geometry_msgs</depend>
   <depend>message_generation</depend>
   <depend>std_msgs</depend>
